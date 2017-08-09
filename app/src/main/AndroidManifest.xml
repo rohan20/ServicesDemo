@@ -16,9 +16,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <service
             android:name=".MyService"
             android:exported="false" />
+
+        <receiver android:name=".MyReceiver">
+            <intent-filter>
+                <action android:name="my_receiver" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

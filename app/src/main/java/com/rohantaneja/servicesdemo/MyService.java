@@ -14,7 +14,6 @@ public class MyService extends IntentService {
 
     public MyService() {
         super("MyService");
-
     }
 
     public MyService(String name) {
@@ -24,5 +23,20 @@ public class MyService extends IntentService {
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
         //runs in background
+
+        while (isServiceRunning) {
+
+            //do something here
+            Intent i = new Intent();
+            i.setAction("my_receiver");
+            i.putExtra("msg", "Launched from service");
+            sendBroadcast(i);
+
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
